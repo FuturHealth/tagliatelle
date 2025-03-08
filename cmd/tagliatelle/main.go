@@ -9,11 +9,13 @@ import (
 )
 
 var (
-	dryRun   bool
-	filePath string
-	pattern  string
-	repo     string
-	tag      string
+	dryRun      bool
+	pattern     string
+	repo        string
+	tag         string
+	project     string
+	environment string
+	filePath    string
 )
 
 func main() {
@@ -26,26 +28,34 @@ func main() {
 	flag.StringVar(&filePath, "file", "", "file path to update")
 	flag.StringVar(&tag, "tag", "", "new tag to use for update")
 	flag.StringVar(&pattern, "pattern", "", "regex pattern to find and replace tag")
+	flag.StringVar(&project, "project", "", "project name")
+	flag.StringVar(&environment, "environment", "", "environment name")
 	flag.BoolVar(&dryRun, "dry-run", false, "enable dry run")
 	flag.Parse()
 
 	switch {
 	case repo == "":
 		invalid("repo")
-	case filePath == "":
-		invalid("filePath")
 	case tag == "":
 		invalid("tag")
 	case pattern == "":
 		invalid("pattern")
+	case project == "":
+		invalid("project")
+	case environment == "":
+		invalid("environment")
+	case filePath == "":
+		invalid("filename")
 	}
 
 	opts := tagliatelle.Options{
-		DryRun:   dryRun,
-		GitRepo:  repo,
-		Pattern:  pattern,
-		FilePath: filePath,
-		Tag:      tag,
+		DryRun:      dryRun,
+		GitRepo:     repo,
+		Pattern:     pattern,
+		Tag:         tag,
+		Project:     project,
+		Environment: environment,
+		FilePath:    filePath,
 	}
 
 	if err := tagliatelle.Entrypoint(opts); err != nil {

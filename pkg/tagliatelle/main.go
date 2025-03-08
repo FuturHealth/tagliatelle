@@ -15,11 +15,13 @@ import (
 )
 
 type Options struct {
-	DryRun   bool
-	GitRepo  string
-	Pattern  string
-	Tag      string
-	FilePath string
+	DryRun      bool
+	GitRepo     string
+	Pattern     string
+	Tag         string
+	FilePath    string
+	Project     string
+	Environment string
 }
 
 // create storage and filesystem
@@ -65,9 +67,7 @@ func checkTagAlreadyExists(data *string, pattern, tag string) (bool, error) {
 	}).Info("checking if tag already exists in file")
 
 	var oldTag string
-
 	m := regexp.MustCompile(pattern)
-
 	res := m.FindAllStringSubmatch(*data, -1)
 
 	if len(res) > 0 && len(res[0]) >= 2 {

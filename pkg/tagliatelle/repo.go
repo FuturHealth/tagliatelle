@@ -55,7 +55,7 @@ func (r *Repo) updateFile(data *string) error {
 	}
 
 	// set commit message
-	msg := fmt.Sprintf("auto bump: %s", r.Options.Tag)
+	msg := fmt.Sprintf("chore(version-bump): %s %s %s", r.Options.Project, r.Options.Environment, r.Options.Tag)
 
 	log.WithFields(log.Fields{
 		"msg": msg,
