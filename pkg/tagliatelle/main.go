@@ -97,7 +97,7 @@ func checkTagAlreadyExists(data *string, pattern, tag string) (bool, error) {
 func regexReplace(data *string, pattern, tag string) *string {
 	m := regexp.MustCompile(pattern)
 
-	t := fmt.Sprintf("${1}%s${3}", tag)
+	t := fmt.Sprintf("${1}%s${3}\n", tag)
 
 	res := m.ReplaceAllString(*data, t)
 
