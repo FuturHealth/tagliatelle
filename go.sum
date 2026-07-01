@@ -11,6 +11,8 @@ github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5 h1:0CwZNZbxp69SHPd
 github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5/go.mod h1:wHh0iHkYZB8zMSxRWpUBQtwG5a7fFgvEO+odwuTv2gs=
 github.com/cloudflare/circl v1.6.0 h1:cr5JKic4HI+LkINy2lg3W2jF8sHCVTBncJr5gIIq7qk=
 github.com/cloudflare/circl v1.6.0/go.mod h1:uddAzsPgqdMAYatqJ0lsjX1oECcQLIlRpzZh3pJrofs=
+github.com/compose-spec/godotenv v1.1.1 h1:lp+WpAInnw06YN9sV/XLUOV/9z4C+6wjJdWlrdVac7o=
+github.com/compose-spec/godotenv v1.1.1/go.mod h1:zF/3BOa18Z24tts5qnO/E9YURQanJTBUf7nlcCTNsyc=
 github.com/compose-spec/godotenv v1.3.0 h1:y5msFdJBf/1IWhHbq8Dl+Kbr594n2a38sRAtO9t4YUw=
 github.com/compose-spec/godotenv v1.3.0/go.mod h1:uIqTkaBYlSa/rIgdZxp1HI1iB/HyZOS4YYw50LSsWOk=
 github.com/cyphar/filepath-securejoin v0.4.1 h1:JyxxyPEaktOD+GAnqIqTf9A8tHyAG22rowi7HkoSU1s=

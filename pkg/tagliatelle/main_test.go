@@ -14,7 +14,41 @@ images:
     newTag: 1.5.0
 `
 	newTagPattern = `(?mi)(newTag: ["']?)(\d+\.\d+\.\d+)(["']?)$`
+
+	multiImageYAML = "images:\n  - name: app1\n    newTag: 1.0.0\n  - name: app2\n    newTag: 2.0.0"
 )
+
+func TestRegexReplace(t *testing.T) {
+	tt := []struct {
+		name    string
+		data    string
+		pattern string
+		tag     string
+		want    string
+	}{
+		{
+			name:    "no extra newline when replaced tag is not the last line",
+			data:    multiImageYAML,
+			pattern: newTagPattern,
+			tag:     "1.5.0",
+			want:    "images:\n  - name: app1\n    newTag: 1.5.0\n  - name: app2\n    newTag: 1.5.0",
+		},
+		{
+			name:    "no extra newline when replaced tag is the last line",
+			data:    "images:\n  - name: app1\n    newTag: 1.0.0",
+			pattern: newTagPattern,
+			tag:     "1.5.0",
+			want:    "images:\n  - name: app1\n    newTag: 1.5.0",
+		},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			result := regexReplace(&tc.data, tc.pattern, tc.tag)
+			assert.Equal(t, tc.want, *result)
+		})
+	}
+}
 
 func TestCheckTagAlreadyExists(t *testing.T) {
 	tt := []struct {

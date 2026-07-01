@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.3
 
 require (
-	github.com/compose-spec/godotenv v1.3.0
+	github.com/compose-spec/godotenv v1.1.1
 	github.com/go-git/go-billy/v5 v5.6.2
 	github.com/go-git/go-git/v5 v5.14.0
 	github.com/pkg/errors v0.9.1
