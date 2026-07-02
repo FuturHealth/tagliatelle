@@ -68,8 +68,8 @@ func (r *Repo) updateFile(data *string) error {
 
 	hash, err := r.Worktree.Commit(msg, &git.CommitOptions{
 		Author: &object.Signature{
-			Name:  "tagliatelle",
-			Email: "kylehanks@protonmail.com",
+			Name:  settings.GitUser,
+			Email: "automation@futurhealth.com",
 			When:  time.Now().UTC(),
 		},
 		Parents: []plumbing.Hash{parent.Hash()},
